@@ -1,193 +1,267 @@
-/* Importar fuentes de Google para un toque más festivo */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap');
-
+/* --- Importar Fuentes de Google --- */
+/* Dancing Script: para títulos grandes y elegantes */
+/* Playfair Display: para subtítulos */
+/* Montserrat: para el texto general (limpia y legible) */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
 
 /* --- Variables de Color de Navidad --- */
 :root {
-    --color-fondo-oscuro: #004d40; /* Verde oscuro, casi pino */
-    --color-verde-claro: #4CAF50; /* Verde más brillante */
-    --color-rojo-navidad: #D32F2F; /* Rojo vibrante */
-    --color-dorado: #FFD700;     /* Dorado */
+    --color-verde-oscuro: #1A4D2E; /* Verde abeto oscuro */
+    --color-verde-claro: #4CAF50; /* Verde pino para acentos */
+    --color-rojo-navidad: #B02E0C; /* Rojo cereza profundo */
+    --color-dorado: #D4AF37;     /* Dorado elegante */
+    --color-dorado-claro: #F5DEB3; /* Dorado más suave */
     --color-blanco: #FFFFFF;
-    --color-gris-claro: #f4f4f4;
-    --color-texto-gris: #555;
+    --color-gris-claro: #f8f8f8;
+    --color-texto-oscuro: #333;
 }
 
 /* --- Estilos Generales --- */
 body {
-    font-family: 'Open Sans', sans-serif; /* Fuente general */
+    font-family: 'Montserrat', sans-serif; /* Fuente principal */
     margin: 0;
     padding: 0;
-    background-color: var(--color-fondo-oscuro); /* Fondo verde oscuro */
-    color: var(--color-blanco); /* Texto blanco por defecto */
+    background: linear-gradient(to bottom right, var(--color-verde-oscuro), #003322); /* Fondo degradado */
+    color: var(--color-blanco);
     line-height: 1.6;
+    min-height: 100vh; /* Para que el degradado cubra toda la página */
+    position: relative;
+    overflow-x: hidden; /* Evitar scroll horizontal por la nieve */
 }
 
-/* --- Encabezado Navideño --- */
+/* --- Animación de Nieve (CSS) --- */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite hacer clic a través de la nieve */
+    z-index: 9999; /* Asegura que esté encima de todo */
+}
+
+.snowflake {
+    position: absolute;
+    background: var(--color-blanco);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+
+/* --- Encabezado Navideño con Degradado y Detalles --- */
 .navidad-header {
-    background-color: var(--color-rojo-navidad); /* Fondo rojo festivo */
-    background-image: url('data:image/svg+xml,...'); /* Patrón sutil o imagen de fondo si tuvieras */
+    background: linear-gradient(to right, var(--color-rojo-navidad), #C0392B); /* Degradado rojo */
     color: var(--color-blanco);
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem; /* Más espacio */
     position: relative;
-    overflow: hidden; /* Para las decoraciones que salgan */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* Sombra más fuerte */
+    border-bottom: 5px solid var(--color-dorado); /* Borde dorado inferior */
 }
 
-.navidad-header::before, .navidad-header::after {
-    content: '';
-    position: absolute;
-    width: 100px; /* Tamaño de las decoraciones */
-    height: 100px;
-    background-image: url('https://raw.githubusercontent.com/google/material-design-icons/master/png/social/whats_app/materialiconsround/48dp/1x/baseline_whats_app_round_48dp.png'); /* Puedes reemplazar con una pequeña imagen de acebo, estrella, etc. */
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.2; /* Sutil */
+.header-content {
+    position: relative;
+    z-index: 10; /* Asegura que el texto esté encima de decoraciones */
 }
-
-.navidad-header::before {
-    top: 10px;
-    left: 10px;
-    transform: rotate(-20deg);
-}
-
-.navidad-header::after {
-    bottom: 10px;
-    right: 10px;
-    transform: rotate(20deg);
-}
-
 
 .titulo-principal {
-    font-family: 'Great Vibes', cursive; /* Fuente elegante para el título */
-    font-size: 4rem; /* Más grande */
+    font-family: 'Dancing Script', cursive; /* Fuente mágica */
+    font-size: 5rem; /* ¡Más grande y espectacular! */
     margin: 0;
     line-height: 1;
-    color: var(--color-dorado); /* Dorado para el texto principal */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para que resalte */
+    color: var(--color-dorado);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7); /* Sombra más definida */
+    letter-spacing: 2px; /* Espaciado entre letras */
 }
 
 .resaltado {
-    color: var(--color-blanco); /* Resalta "Navidad" en blanco */
-}
-
-.subtitulo {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-top: 0.5rem;
     color: var(--color-blanco);
 }
 
-.marca {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    color: var(--color-dorado);
+/* Animación de brillo para el título */
+.animacion-brillo {
+    animation: brillo 2s infinite alternate;
 }
+
+@keyframes brillo {
+    from { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 5px var(--color-dorado-claro); }
+    to { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px var(--color-dorado-claro), 0 0 30px var(--color-blanco); }
+}
+
+
+.subtitulo {
+    font-family: 'Playfair Display', serif; /* Fuente elegante */
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    color: var(--color-dorado-claro);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.marca {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    color: var(--color-blanco);
+    letter-spacing: 1px;
+}
+
+/* --- Guirnaldas / Muerdago (Pseudo-elementos o imágenes) --- */
+/* Aquí podemos usar una imagen real de guirnalda o muerdago.
+   Si no tienes una imagen, estos son solo placeholders,
+   puedes buscar "christmas garland png" o "holly png" */
+.guirnalda {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url('https://i.imgur.com/your-holly-or-garland-image.png'); /* <-- ¡CAMBIA ESTA IMAGEN! (o déjala vacía) */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+    opacity: 0.8;
+}
+
+.guirnalda.top-left { top: 0; left: 0; transform: rotate(-10deg); }
+.guirnalda.top-right { top: 0; right: 0; transform: rotate(10deg); }
+.guirnalda.bottom-left { bottom: 0; left: 0; transform: rotate(190deg); } /* Rotado para que parezca que sube */
+.guirnalda.bottom-right { bottom: 0; right: 0; transform: rotate(-190deg); } /* Rotado */
+
 
 /* --- La Galería de Muñecos --- */
 #galeria-container {
-    max-width: 1200px;
-    margin: 3rem auto; /* Más espacio */
-    padding: 0 1rem;
+    max-width: 1300px; /* Un poco más ancha */
+    margin: 4rem auto;
+    padding: 0 1.5rem;
     
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajustado para más columnas en pantallas grandes */
-    gap: 25px; /* Más separación entre tarjetas */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px; /* Más separación */
 }
 
 .foto-card {
-    background-color: var(--color-blanco); /* Fondo blanco para cada tarjeta */
-    border: 1px solid var(--color-dorado); /* Borde dorado */
-    border-radius: 12px; /* Más redondeado */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-dorado-claro);
+    border-radius: 15px; /* Más redondeado */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Sombra más intensa */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto al pasar el mouse */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .foto-card:hover {
-    transform: translateY(-5px) scale(1.02); /* Se levanta y agranda un poco */
-    box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+    transform: translateY(-8px) scale(1.03); /* Se levanta más y agranda */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
 .foto-card img {
     width: 100%;
-    height: 280px; /* Alto fijo, un poco más pequeño */
-    object-fit: cover;
+    height: 320px; /* Alto fijo más grande para que no se vea cortada */
+    object-fit: contain; /* ¡Importante! Mantiene la imagen completa sin cortar, añadiendo barras si es necesario */
+    background-color: #f0f0f0; /* Fondo claro para las imágenes */
     display: block;
-    border-bottom: 2px solid var(--color-dorado); /* Línea dorada debajo de la imagen */
+    border-bottom: 3px solid var(--color-dorado);
 }
 
 .foto-info {
-    padding: 15px;
+    padding: 20px 15px;
     text-align: center;
-    color: var(--color-texto-gris); /* Texto dentro de la tarjeta */
+    color: var(--color-texto-oscuro);
 }
 
 .foto-info h3 {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.3rem; /* Título un poco más grande */
-    color: var(--color-rojo-navidad); /* Título rojo */
+    margin-bottom: 18px;
+    font-size: 1.4rem;
+    color: var(--color-rojo-navidad);
+    font-family: 'Playfair Display', serif;
 }
 
 /* --- Botón de WhatsApp Festivo --- */
 .wa-button {
     display: inline-block;
-    background-color: var(--color-verde-claro); /* Verde de WhatsApp */
+    background-color: var(--color-verde-claro);
     color: var(--color-blanco);
-    padding: 12px 25px; /* Un poco más grande */
+    padding: 14px 28px; /* Más grande aún */
     text-decoration: none;
-    border-radius: 30px; /* Botón más redondeado (pastilla) */
+    border-radius: 35px;
     font-weight: bold;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: 2px solid var(--color-verde-claro); /* Borde por defecto */
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none; /* Quitamos el borde para un look más limpio */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    letter-spacing: 0.5px;
 }
 
 .wa-button:hover {
-    background-color: var(--color-blanco); /* Fondo blanco al pasar el mouse */
-    color: var(--color-verde-claro); /* Texto verde */
-    border-color: var(--color-verde-claro); /* Borde verde */
-    transform: translateY(-2px); /* Pequeño efecto de levantamiento */
+    background-color: var(--color-dorado); /* Dorado al pasar el mouse */
+    color: var(--color-verde-oscuro); /* Texto verde oscuro */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* --- Pie de Página --- */
 .navidad-footer {
-    background-color: var(--color-rojo-navidad);
+    background: linear-gradient(to left, var(--color-rojo-navidad), #C0392B); /* Degradado rojo */
     color: var(--color-blanco);
     text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-    font-size: 1rem;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+    padding: 2.5rem 1rem;
+    margin-top: 5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 -8px 20px rgba(0,0,0,0.4);
+    border-top: 5px solid var(--color-dorado); /* Borde dorado superior */
 }
 
 .navidad-footer p {
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 }
 
 /* --- Responsive (Para móviles) --- */
 @media (max-width: 768px) {
     .navidad-header {
-        padding: 2rem 1rem;
+        padding: 3rem 0.5rem;
     }
     .titulo-principal {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     .subtitulo {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+    }
+    .marca {
+        font-size: 1.1rem;
     }
     #galeria-container {
-        grid-template-columns: 1fr; /* Una columna en móviles */
-        padding: 0 0.5rem;
+        grid-template-columns: 1fr;
+        padding: 0 0.8rem;
     }
     .foto-card {
-        margin: 0 auto; /* Centrar tarjeta en móviles */
-        max-width: 350px; /* Máximo ancho para tarjetas en móvil */
+        max-width: 380px;
+    }
+    .guirnalda { /* Ocultar guirnaldas en móviles si estorban */
+        display: none;
+    }
+}
+
+/* Más pequeño aún */
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 2.8rem;
+    }
+    .subtitulo {
+        font-size: 1.1rem;
+    }
+    .wa-button {
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }
