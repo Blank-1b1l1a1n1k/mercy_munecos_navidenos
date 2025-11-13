@@ -20,7 +20,7 @@ for (let i = 1; i <= totalFotos; i++) {
     const linkWA = `https://wa.me/${tuNumeroWA}?text=${mensaje}`;
 
     // 3. Crear el nombre del archivo de imagen
-    const archivoImg = `${carpetaFotos}/${i}.png`;
+    const archivoImg = `${carpetaFotos}/${i}.webp`;
 
     // 4. Crear la tarjeta HTML para esta foto
     const tarjetaHTML = `
@@ -37,4 +37,5 @@ for (let i = 1; i <= totalFotos; i++) {
 
     // 5. Añadir la tarjeta a la galería en la página
     galeria.innerHTML += tarjetaHTML;
+
 }
